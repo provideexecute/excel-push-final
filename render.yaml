@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: excel-push-with-preload
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python upload_excel_to_b2.py"
+    envVars:
+      - key: B2_KEY_ID
+        value: your_backblaze_key_id
+      - key: B2_APP_KEY
+        value: your_backblaze_application_key
+      - key: B2_BUCKET_NAME
+        value: your_b2_bucket

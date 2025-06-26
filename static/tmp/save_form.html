@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Сначала сохранить файл</title>
+</head>
+<body>
+  <h2>Шаг 1: Загрузите файл для сохранения на сервер</h2>
+  <form method="POST" action="/save-local" enctype="multipart/form-data">
+    <input type="file" name="file" required>
+    <button type="submit">💾 Сохранить в static/tmp</button>
+  </form>
+</body>
+</html>

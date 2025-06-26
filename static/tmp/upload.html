@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Загрузка в Backblaze B2</title>
+</head>
+<body>
+  <h2>Шаг 2: Отправить файл "{{ filename }}" в облако</h2>
+  <form method="POST" action="/receive">
+    <input type="hidden" name="filename" value="{{ filename }}">
+    <button type="submit">📤 Отправить в B2</button>
+  </form>
+</body>
+</html>
