@@ -36,7 +36,7 @@ def save_local():
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         uploaded_file.save(file_path)
         return redirect(url_for("upload", filename=filename))
-    return "❌ Ошибка: файл не выбран"
+    return "❌ Ladefehler: Datei nicht ausgewählt"
 
 @app.route("/upload")
 def upload():
@@ -48,16 +48,16 @@ def receive():
     filename = request.form['filename']
     file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
     if not os.path.exists(file_path):
-        return f"❌ Файл {filename} не найден в {UPLOAD_FOLDER}"
+        return f"❌ Datei {filename} nicht ausgewählt im {UPLOAD_FOLDER}"
     with open(file_path, "rb") as f:
         base64_data = base64.b64encode(f.read()).decode("utf-8")
         with open(file_path + ".b64.txt", "w") as b64file:
             b64file.write(base64_data)
     try:
         url = upload_to_b2(file_path, filename)
-        return f"<p>✅ Загружено в B2: <a href='{url}'>{url}</a></p>"
+        return f"<p>✅ Hochgeladen: <a href='{url}'>{url}</a></p>"
     except Exception as e:
-        return f"<p>❌ Ошибка загрузки: {str(e)}</p>"
+        return f"<p>❌ Ladefehler: {str(e)}</p>"
 
 @app.route("/static/tmp/<filename>")
 def serve_tmp_file(filename):
